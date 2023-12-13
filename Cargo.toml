@@ -1,0 +1,37 @@
+[package]
+name = "prometheus_fdw"
+version = "0.0.1"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[features]
+default = ["pg13"]
+pg11 = ["pgrx/pg11", "pgrx-tests/pg11" ]
+pg12 = ["pgrx/pg12", "pgrx-tests/pg12" ]
+pg13 = ["pgrx/pg13", "pgrx-tests/pg13" ]
+pg14 = ["pgrx/pg14", "pgrx-tests/pg14" ]
+pg15 = ["pgrx/pg15", "pgrx-tests/pg15" ]
+pg16 = ["pgrx/pg16", "pgrx-tests/pg16" ]
+pg_test = []
+
+[dependencies]
+pgrx = "=0.11.0"
+supabase-wrappers = { git = "https://github.com/supabase/wrappers.git", rev = "v0.2.0" }
+prometheus-http-query = "0.6.6"
+chrono = "0.4.26"
+tokio = { version = "1.29.1", features = ["rt-multi-thread"] }
+lazy_static = "1.4.0"
+
+[dev-dependencies]
+pgrx-tests = "=0.11.0"
+
+[profile.dev]
+panic = "unwind"
+
+[profile.release]
+panic = "unwind"
+opt-level = 3
+lto = "fat"
+codegen-units = 1
