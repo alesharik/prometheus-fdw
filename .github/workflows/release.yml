@@ -85,10 +85,6 @@ jobs:
           # strip the leading v
           deb_version=${extension_version:1}
 
-          # copy schema file to version update sql files
-          # Note: some version numbers may be skipped
-          cp ${extension_dir}/${{ matrix.extension_name }}--${deb_version}.sql ${extension_dir}/${{ matrix.extension_name }}--0.0.1--${deb_version}.sql
-
           # Create installable package
           mkdir archive
           cp `find target/release -type f -name "${{ matrix.extension_name }}*"` archive
