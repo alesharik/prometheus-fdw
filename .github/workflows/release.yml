@@ -35,12 +35,10 @@ jobs:
     strategy:
       matrix:
         extension_name:
-          - wrappers
+          - prometheus_fdw
         pgrx_version:
           - 0.11.0
         postgres: [14, 15, 16]
-        features:
-          - "all_fdws"
         box:
           - { runner: ubuntu-20.04, arch: amd64 }
           - { runner: arm-runner, arch: arm64 }
@@ -79,7 +77,7 @@ jobs:
 
           # selects the pgVer from pg_config on path
           # https://github.com/tcdi/pgrx/issues/288
-          cargo pgrx package --no-default-features --features pg${{ matrix.postgres }},${{ matrix.features }}
+          cargo pgrx package --no-default-features --features pg${{ matrix.postgres }}
 
           # Extension version and path
           extension_version=${{ github.ref_name }}
