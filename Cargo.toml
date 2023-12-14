@@ -1,5 +1,5 @@
 [package]
-name = "prometheus_fdw"
+name = "prometheus-fdw"
 version = "0.0.2"
 edition = "2021"
 
