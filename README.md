@@ -29,7 +29,7 @@ create foreign table scrape_duration_seconds (
 
 ### Query format
 Query can contain variables like `${var}`. These will be replaced by values from where clause.
-If array of values is passed in `${var}`, it will be concatenated with `|`.
+If array of values is passed in `${var}`, it will be wrapped with `()` and concatenated with `|`.
 
 ### Where parameters
 - `time timestamp` - when running instant query, specifies timestamp from where to take samples. Expects UTC.

@@ -41,6 +41,7 @@ impl PromQuery {
                             &v.iter()
                                 .map(|c| c.to_string())
                                 .map(|s| format_str(s))
+                                .map(|s| format!("({s})"))
                                 .collect::<Vec<String>>()
                                 .join("|"),
                         ),
