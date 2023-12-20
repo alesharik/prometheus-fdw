@@ -75,6 +75,10 @@ impl ForeignDataWrapper<Error> for PrometheusFdw {
     }
 
     fn iter_scan(&mut self, row: &mut Row) -> Result<Option<()>> {
+        if self.idx >= self.result.len() {
+            return Ok(None)
+        }
+
         let data: &InstantVector = &self.result[self.idx];
         for col in &self.tgt_columns {
             if data.metric().contains_key(&col.name) {
