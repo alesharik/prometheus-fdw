@@ -101,11 +101,7 @@ impl ForeignDataWrapper<Error> for PrometheusFdw {
             }
         }
         self.idx += 1;
-        if self.idx >= self.result.len() {
-            Ok(None)
-        } else {
-            Ok(Some(()))
-        }
+        Ok(Some(()))
     }
 
     fn end_scan(&mut self) -> Result<()> {
