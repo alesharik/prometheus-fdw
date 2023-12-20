@@ -1,5 +1,5 @@
 comment = 'prometheus_fdw:  Created by pgrx'
 default_version = '@CARGO_VERSION@'
-module_pathname = '$libdir/prometheus_fdw'
+module_pathname = '$libdir/prometheusfdw'
 relocatable = false
 superuser = false
