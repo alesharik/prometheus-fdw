@@ -63,6 +63,9 @@ impl ForeignDataWrapper<Error> for PrometheusFdw {
         if let Some(time) = time {
             req = req.at(time??.timestamp());
         }
+        if let Some(step) = options.get("step") {
+            req = req.param("step", step)
+        }
         let result = RT.block_on(async move { req.get().await })?;
         self.result = result
             .data()

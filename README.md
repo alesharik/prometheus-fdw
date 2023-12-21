@@ -34,5 +34,9 @@ If array of values is passed in `${var}`, it will be wrapped with `()` and conca
 ### Where parameters
 - `time timestamp` - when running instant query, specifies timestamp from where to take samples. Expects UTC.
 
+### Table parameters
+- `query` - PromQL query
+- `rate` - (optional) rate parameter for VictoriaMetrics
+
 ### Todo
 - [ ] Range queries
