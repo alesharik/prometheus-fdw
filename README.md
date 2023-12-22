@@ -3,7 +3,7 @@ Postgres extension to fetch data from prometheus.
 
 ### Setup
 ```sql
-create extension prometheus_fdw; -- load extension
+create extension prometheusfdw; -- load extension
 
 create foreign data wrapper prometheus_wrapper
   handler prometheus_fdw_handler
