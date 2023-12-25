@@ -46,7 +46,7 @@ impl ForeignDataWrapper<Error> for PrometheusFdw {
     ) -> Result<()> {
         let query = options.get("query").ok_or(Error::QueryOptionRequired)?;
         let query = PromQuery::parse(query).compile(quals)?;
-        let time = quals.iter().find(|q| &q.field == "time").map(|q| {
+        let time = quals.iter().find(|q| &q.field == "timestamp").map(|q| {
             if q.operator != "=" {
                 return Err(Error::TimeRequiresEquals);
             }
@@ -112,3 +112,4 @@ impl ForeignDataWrapper<Error> for PrometheusFdw {
         Ok(())
     }
 }
+
